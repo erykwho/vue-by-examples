@@ -2,7 +2,7 @@
 
 > This is just the result of me playing with Vue and pushing some crazy things into this beautiful world called GitHub
 
-* Vue Version: ^2.3.3
+* Version of Vue used: ^2.3.3
 
 #### Access this beautiful project on Heroku:
 https://vue-by-examples.herokuapp.com/
@@ -106,7 +106,7 @@ heroku git:remote -a <app_name>
 git push heroku master
 
 # use the flag -f to force push into heroku app, if necessary
-# git push heroku master
+# git push -f heroku master
 ```
 
 All done. Your applications should be available for access now. You can see the link on the final of the output of the push or on the Heroku platform.

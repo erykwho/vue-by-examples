@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <menu-options></menu-options>
-    <div class="row">
-      <div class="container-fluid">
+    <div class="container">
+      <transition mode="out-in" appear name="slide">
         <router-view></router-view>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -20,4 +20,20 @@ export default {
 </script>
 
 <style>
+
+  .slide-enter
+    /* .slide-fade-leave-active for <2.1.8 */ {
+    transform: translateX(-300%);
+  }
+  .slide-enter-active {
+    transition: all .3s;
+  }
+  .slide-leave-active {
+    transition: all .3s;
+  }
+  .slide-leave-to
+    /* .slide-fade-leave-active for <2.1.8 */ {
+    transform: translateX(300%);
+  }
+
 </style>

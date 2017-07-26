@@ -5,7 +5,7 @@
     </b-alert>
 
     <div class="row">
-      <div class="col-md-4 pb-2">
+      <div class="col-4 pb-2">
         <b-button size="sm" variant="primary" href="" @click="showDismissibleAlert = true">
           Invoke something dangerous
         </b-button>

@@ -20,6 +20,7 @@
           <b-nav-item-dropdown text="Examples" right>
             <b-dropdown-item to="/yesno">Yes/No</b-dropdown-item>
             <b-dropdown-item to="/bootstrap-play">Bootstrap Play</b-dropdown-item>
+            <b-dropdown-item to="/emit-trigger">Emit Trigger</b-dropdown-item>
           </b-nav-item-dropdown>
 
         </b-nav>

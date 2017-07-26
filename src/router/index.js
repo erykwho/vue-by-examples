@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
+import About from '@/components/About'
+import YesNo from '@/components/YesNo'
+import BootstrapPlay from '@/components/BootstrapPlay'
 
 Vue.use(Router)
 
@@ -10,6 +13,21 @@ export default new Router({
       path: '/',
       name: 'Hello',
       component: Hello
+    },
+    {
+      path: '/yesno',
+      name: 'YesNo',
+      component: YesNo
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
+    },
+    {
+      path: '/bootstrap-play',
+      name: 'BootstrapPlay',
+      component: BootstrapPlay
     }
   ]
 })

@@ -1,6 +1,11 @@
 <template>
-  <div class="hello">
-    <h1>Surprise Motherfucker!!</h1>
+  <div class="yesno">
+    <p>
+      Ask a yes/no question:
+      <input v-model="question">
+    </p>
+    <p>{{ answer }}</p>
+    <img :src="imgSrc">
   </div>
 </template>
 
@@ -9,7 +14,7 @@ import _ from 'lodash'
 import axios from 'axios'
 
 export default {
-  name: 'hello',
+  name: 'yesno',
   data () {
     return {
       question: '',

@@ -1,11 +1,17 @@
 <template>
   <div class="yesno">
-    <p>
-      Ask a yes/no question:
-      <input v-model="question">
-    </p>
-    <p>{{ answer }}</p>
-    <img :src="imgSrc">
+    <b-form-fieldset
+      label="Ask a yes/no question:"
+      :feedback="answer"
+      :label-cols="3"
+      :state="state"
+    >
+
+      <b-form-input v-model="question" :state="state"></b-form-input>
+    </b-form-fieldset>
+    <div class="row justify-content-center" v-show="isQuestion">
+      <img width='40%' height='40%' :src="imgSrc">
+    </div>
   </div>
 </template>
 
@@ -19,7 +25,16 @@ export default {
     return {
       question: '',
       answer: 'I cannot give you an answer until you ask a question!',
-      imgSrc: ''
+      imgSrc: '',
+      isQuestion: ''
+    }
+  },
+  computed: {
+    state () {
+      if (this.isQuestion === '') {
+        return
+      }
+      return this.isQuestion ? 'success' : 'danger'
     }
   },
   watch: {
@@ -41,6 +56,7 @@ export default {
       function () {
         if (this.question.indexOf('?') === -1) {
           this.answer = 'Questions usually contain a question mark. ;-)'
+          this.isQuestion = false
           return
         }
         this.answer = 'Thinking...'
@@ -53,6 +69,7 @@ export default {
           .catch(function (error) {
             vm.answer = 'Error! Could not reach the API. ' + error
           })
+        this.isQuestion = true
       },
       // This is the number of milliseconds we wait for the
       // user to stop typing.

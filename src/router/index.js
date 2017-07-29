@@ -42,7 +42,7 @@ export default new Router({
       component: Routing
     },
     {
-      path: '/routing/:id',
+      path: '/routing/:id/routed/:routed_id',
       name: 'RoutingPage',
       component: Routing
     }

@@ -4,8 +4,10 @@
       <h1>Routing</h1>
     </div>
     <div class="row justify-content-center">
-      <h2>Route Page {{$route.params.id}}</h2>
-      <h2>Routed Page {{$route.params.routed_id}}</h2>
+      <h2 v-show="$route.params.id">Route Page {{$route.params.id}}</h2>
+    </div>
+    <div class="row justify-content-center">
+      <h2 v-show="$route.params.id">Routed Page {{$route.params.routed_id}}</h2>
     </div>
     <div class="row justify-content-center">
       <b-form-fieldset description="Route id">

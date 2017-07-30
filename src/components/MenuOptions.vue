@@ -19,8 +19,8 @@
 
           <b-nav-item-dropdown text="Cool Stuff" right>
             <b-dropdown-item to="/yesno">Yes/No</b-dropdown-item>
-            <b-dropdown-item to="/bootstrap-play">Bootstrap Play</b-dropdown-item>
-            <b-dropdown-item to="/emit-trigger">Emit Trigger</b-dropdown-item>
+            <b-dropdown-item to="/bootstrap-learning">Bootstrap Learning</b-dropdown-item>
+            <b-dropdown-item to="/good-dady">Good Daddy</b-dropdown-item>
           </b-nav-item-dropdown>
 
         </b-nav>

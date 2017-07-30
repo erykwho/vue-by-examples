@@ -46,13 +46,13 @@
           <template v-for='(name, index) in children'>
 
             <div :key="name" class="col-auto border">
-              <child
+              <good-boy
                 v-bind:index="index"
                 v-bind:name="name"
                 v-bind:daddyGood="daddyGood"
                 v-on:abortChild="removeChild($event)"
                 v-on:rename="renameChild($event)">
-              </child>
+              </good-boy>
             </div>
           </template>
         </transition-group>
@@ -64,7 +64,7 @@
 
 
 <script>
-import Child from '@/components/Child.vue'
+import GoodBoy from '@/components/cool-stuff/good-daddy/GoodBoy.vue'
 import _ from 'lodash'
 export default {
   data () {
@@ -120,7 +120,7 @@ export default {
     }
   },
   components: {
-    Child
+    GoodBoy
   }
 }
 </script>

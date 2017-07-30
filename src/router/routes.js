@@ -1,19 +1,23 @@
-import Hello from '@/components/Hello'
+import VueByExamples from '@/components/VueByExamples'
 import About from '@/components/About'
-import YesNo from '@/components/YesNo'
-import Parent from '@/components/Parent'
-import BootstrapPlay from '@/components/BootstrapPlay'
-import Routing from '@/components/Routing'
+
+// Cool Stuff
+import YesNo from '@/components/cool-stuff/YesNo'
+import BootstrapLearning from '@/components/cool-stuff/BootstrapLearning'
+import GoodDaddy from '@/components/cool-stuff/good-daddy/GoodDaddy'
+
+// Routing
+import DynamicRouting from '@/components/routing/DynamicRouting'
 
 var routes = [
   {
     path: '/',
-    name: 'Hello',
-    component: Hello
+    name: 'Vue By Examples',
+    component: VueByExamples
   },
   {
     path: '/yesno',
-    name: 'YesNo',
+    name: 'Yes or No',
     component: YesNo
   },
   {
@@ -23,23 +27,23 @@ var routes = [
   },
   {
     path: '/bootstrap-play',
-    name: 'BootstrapPlay',
-    component: BootstrapPlay
+    name: 'Bootstrap Learning',
+    component: BootstrapLearning
   },
   {
-    path: '/emit-trigger',
-    name: 'Parent',
-    component: Parent
+    path: '/good-daddy',
+    name: 'Good Daddy',
+    component: GoodDaddy
   },
   {
     path: '/dynamic-routing',
-    name: 'Routing',
-    component: Routing
+    name: 'Dynamic Routing',
+    component: DynamicRouting
   },
   {
     path: '/dynamic-routing/:id/routed/:routed_id',
-    name: 'RoutingPage',
-    component: Routing
+    name: 'Dynamic Routing (Route within route)',
+    component: DynamicRouting
   }
 ]
 

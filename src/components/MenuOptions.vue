@@ -12,16 +12,16 @@
       <b-collapse is-nav id="nav_collapse">
 
         <b-nav is-nav-bar>
-
-          <b-nav-item-dropdown text="Routing" right>
-            <b-dropdown-item to="/dynamic-routing">Dynamic Routing</b-dropdown-item>
-          </b-nav-item-dropdown>
-
-          <b-nav-item-dropdown text="Cool Stuff" right>
-            <b-dropdown-item to="/yesno">Yes/No</b-dropdown-item>
-            <b-dropdown-item to="/bootstrap-learning">Bootstrap Learning</b-dropdown-item>
-            <b-dropdown-item to="/good-dady">Good Daddy</b-dropdown-item>
-          </b-nav-item-dropdown>
+          <template v-for="group in groups">
+            <b-nav-item-dropdown :text="group.name" right>
+              <b-dropdown-item
+                :key="route.id"
+                v-for="route in categoryRoutes(group.category)"
+                :to="route.path">
+                {{route.name}}
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
+          </template>
 
         </b-nav>
         <b-nav is-nav-bar class="ml-auto">
@@ -35,9 +35,34 @@
 </template>
 
 <script>
-export default {
-  name: 'menu'
-}
+  import routes from '../router/routes.js'
+
+  export default {
+    name: 'menu',
+    data () {
+      return {
+        routes: routes,
+        groups: [
+          {
+            name: 'Routing',
+            category: 'routing'
+          },
+          {
+            name: 'Cool Stuff',
+            category: 'coolStuff'
+          }
+        ]
+      }
+    },
+    methods: {
+      categoryRoutes (category) {
+        let routes = this.routes.slice()
+        return routes.filter(function (el) {
+          return el.category === category
+        })
+      }
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

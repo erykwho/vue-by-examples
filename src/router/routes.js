@@ -8,17 +8,13 @@ import GoodDaddy from '@/components/cool-stuff/good-daddy/GoodDaddy'
 
 // Routing
 import DynamicRouting from '@/components/routing/DynamicRouting'
+import RoutingUser from '@/components/routing/user/User'
 
-var routes = [
+const routes = [
   {
     path: '/',
     name: 'Vue By Examples',
     component: VueByExamples
-  },
-  {
-    path: '/yesno',
-    name: 'Yes or No',
-    component: YesNo
   },
   {
     path: '/about',
@@ -26,24 +22,39 @@ var routes = [
     component: About
   },
   {
+    path: '/yesno',
+    name: 'Yes or No',
+    category: 'coolStuff',
+    component: YesNo
+  },
+  {
     path: '/bootstrap-play',
     name: 'Bootstrap Learning',
+    category: 'coolStuff',
     component: BootstrapLearning
   },
   {
     path: '/good-daddy',
     name: 'Good Daddy',
+    category: 'coolStuff',
     component: GoodDaddy
   },
   {
     path: '/dynamic-routing',
     name: 'Dynamic Routing',
+    category: 'routing',
     component: DynamicRouting
   },
   {
     path: '/dynamic-routing/:id/routed/:routed_id',
     name: 'Dynamic Routing (Route within route)',
     component: DynamicRouting
+  },
+  {
+    path: '/user',
+    name: 'Nested Routing (User)',
+    category: 'routing',
+    component: RoutingUser
   }
 ]
 

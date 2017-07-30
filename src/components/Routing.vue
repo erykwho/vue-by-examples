@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="row justify-content-center">
-      <h1>Routing</h1>
+      <h1>Dynamic Routing</h1>
     </div>
     <div class="row justify-content-center">
-      <h2 v-show="$route.params.id">Route Page {{$route.params.id}}</h2>
+      <h3 v-show="$route.params.id">Dynamic Route Page {{$route.params.id}}</h3>
     </div>
     <div class="row justify-content-center">
-      <h2 v-show="$route.params.id">Routed Page {{$route.params.routed_id}}</h2>
+      <h3 v-show="$route.params.id">Routed Page {{$route.params.routed_id}}</h3>
     </div>
     <div class="row justify-content-center">
       <b-form-fieldset description="Route id">
@@ -17,7 +17,6 @@
       <b-input-group :left="routingPage + /routed/">
         <b-form-input v-model.number="routedPage" type="number"></b-form-input>
       </b-input-group>
-
       <b-button :to="newRoute">Go to page</b-button>
     </div>
   </div>
@@ -33,7 +32,7 @@
     },
     computed: {
       routingPage () {
-        return '/routing/' + String(this.page)
+        return '/dynamic-routing/' + String(this.page)
       },
       newRoute () {
         return this.routingPage + /routed/ + this.routedPage

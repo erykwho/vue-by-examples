@@ -37,12 +37,12 @@ export default new Router({
       component: Parent
     },
     {
-      path: '/routing',
+      path: '/dynamic-routing',
       name: 'Routing',
       component: Routing
     },
     {
-      path: '/routing/:id/routed/:routed_id',
+      path: '/dynamic-routing/:id/routed/:routed_id',
       name: 'RoutingPage',
       component: Routing
     }

@@ -1,20 +1,19 @@
-import Hello from '@/components/Hello'
+import VueByExamples from '@/components/VueByExamples'
 import About from '@/components/About'
-import YesNo from '@/components/YesNo'
-import Parent from '@/components/Parent'
-import BootstrapPlay from '@/components/BootstrapPlay'
-import Routing from '@/components/Routing'
+// Cool Stuff
+import YesNo from '@/components/cool-stuff/YesNo'
+import BootstrapLearning from '@/components/cool-stuff/BootstrapLearning'
+import GoodDaddy from '@/components/cool-stuff/good-daddy/GoodDaddy'
+// Routing
+import DynamicRouting from '@/components/routing/DynamicRouting'
+import RoutingUser from '@/components/routing/user/User'
+import routeGroups from './groups.js'
 
-var routes = [
+const routes = [
   {
     path: '/',
-    name: 'Hello',
-    component: Hello
-  },
-  {
-    path: '/yesno',
-    name: 'YesNo',
-    component: YesNo
+    name: 'Vue By Examples',
+    component: VueByExamples
   },
   {
     path: '/about',
@@ -22,24 +21,39 @@ var routes = [
     component: About
   },
   {
+    path: '/yesno',
+    name: 'Yes or No',
+    category: routeGroups.coolStuff.category,
+    component: YesNo
+  },
+  {
     path: '/bootstrap-play',
-    name: 'BootstrapPlay',
-    component: BootstrapPlay
+    name: 'Bootstrap Learning',
+    category: routeGroups.coolStuff.category,
+    component: BootstrapLearning
   },
   {
-    path: '/emit-trigger',
-    name: 'Parent',
-    component: Parent
+    path: '/good-daddy',
+    name: 'Good Daddy',
+    category: routeGroups.coolStuff.category,
+    component: GoodDaddy
   },
   {
-    path: '/routing',
-    name: 'Routing',
-    component: Routing
+    path: '/dynamic-routing',
+    name: 'Dynamic Routing',
+    category: routeGroups.routing.category,
+    component: DynamicRouting
   },
   {
-    path: '/routing/:id/routed/:routed_id',
-    name: 'RoutingPage',
-    component: Routing
+    path: '/dynamic-routing/:id/routed/:routed_id',
+    name: 'Dynamic Routing (Route within route)',
+    component: DynamicRouting
+  },
+  {
+    path: '/user',
+    name: 'Nested Routing (User)',
+    category: 'routing',
+    component: RoutingUser
   }
 ]
 

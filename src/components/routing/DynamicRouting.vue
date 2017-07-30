@@ -17,7 +17,7 @@
       <b-input-group :left="routingPage + /routed/">
         <b-form-input v-model.number="routedPage" type="number"></b-form-input>
       </b-input-group>
-      <b-button :to="newRoute">Go to page</b-button>
+      <button class="btn btn-outline-primary" @click="newRoute">Go to page</button>
     </div>
   </div>
 </template>
@@ -33,9 +33,12 @@
     computed: {
       routingPage () {
         return '/dynamic-routing/' + String(this.page)
-      },
+      }
+    },
+    methods: {
       newRoute () {
-        return this.routingPage + /routed/ + this.routedPage
+        let route = this.routingPage + /routed/ + this.routedPage
+        this.$router.push(route)
       }
     }
   }

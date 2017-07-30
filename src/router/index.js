@@ -5,6 +5,7 @@ import About from '@/components/About'
 import YesNo from '@/components/YesNo'
 import Parent from '@/components/Parent'
 import BootstrapPlay from '@/components/BootstrapPlay'
+import Routing from '@/components/Routing'
 
 Vue.use(Router)
 
@@ -34,6 +35,16 @@ export default new Router({
       path: '/emit-trigger',
       name: 'Parent',
       component: Parent
+    },
+    {
+      path: '/routing',
+      name: 'Routing',
+      component: Routing
+    },
+    {
+      path: '/routing/:id/routed/:routed_id',
+      name: 'RoutingPage',
+      component: Routing
     }
   ]
 })

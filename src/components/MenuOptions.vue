@@ -36,22 +36,14 @@
 
 <script>
   import routes from '../router/routes.js'
+  import routeGroups from '../router/groups.js'
 
   export default {
     name: 'menu',
     data () {
       return {
         routes: routes,
-        groups: [
-          {
-            name: 'Routing',
-            category: 'routing'
-          },
-          {
-            name: 'Cool Stuff',
-            category: 'coolStuff'
-          }
-        ]
+        groups: routeGroups
       }
     },
     methods: {

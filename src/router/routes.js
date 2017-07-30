@@ -1,14 +1,13 @@
 import VueByExamples from '@/components/VueByExamples'
 import About from '@/components/About'
-
 // Cool Stuff
 import YesNo from '@/components/cool-stuff/YesNo'
 import BootstrapLearning from '@/components/cool-stuff/BootstrapLearning'
 import GoodDaddy from '@/components/cool-stuff/good-daddy/GoodDaddy'
-
 // Routing
 import DynamicRouting from '@/components/routing/DynamicRouting'
 import RoutingUser from '@/components/routing/user/User'
+import routeGroups from './groups.js'
 
 const routes = [
   {
@@ -24,25 +23,25 @@ const routes = [
   {
     path: '/yesno',
     name: 'Yes or No',
-    category: 'coolStuff',
+    category: routeGroups.coolStuff.category,
     component: YesNo
   },
   {
     path: '/bootstrap-play',
     name: 'Bootstrap Learning',
-    category: 'coolStuff',
+    category: routeGroups.coolStuff.category,
     component: BootstrapLearning
   },
   {
     path: '/good-daddy',
     name: 'Good Daddy',
-    category: 'coolStuff',
+    category: routeGroups.coolStuff.category,
     component: GoodDaddy
   },
   {
     path: '/dynamic-routing',
     name: 'Dynamic Routing',
-    category: 'routing',
+    category: routeGroups.routing.category,
     component: DynamicRouting
   },
   {

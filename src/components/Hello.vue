@@ -1,6 +1,12 @@
 <template>
-  <div class="hello">
-    <h1>Surprise Motherfucker!!</h1>
+  <div>
+    <h1>All routes</h1>
+    <ul class="list-group" v-for="route in routes">
+      <router-link :to="route.path">
+        <li class="col-3 list-group-item list-group-item-action">{{route.name}}</li>
+      </router-link>
+    </ul>
+
   </div>
 </template>
 
@@ -8,13 +14,15 @@
 import _ from 'lodash'
 import axios from 'axios'
 
+import routes from '../router/routes'
+
 export default {
-  name: 'hello',
   data () {
     return {
       question: '',
       answer: 'I cannot give you an answer until you ask a question!',
-      imgSrc: ''
+      imgSrc: '',
+      routes: routes
     }
   },
   watch: {

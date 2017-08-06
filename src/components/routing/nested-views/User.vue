@@ -11,7 +11,7 @@
 export default {
   methods: {
     goTo (destination) {
-      let route = '/user/' + this.$route.params.id + '/' + destination
+      let route = '/nested-views/' + this.$route.params.id + '/' + destination
       this.$router.push(route)
     }
   }

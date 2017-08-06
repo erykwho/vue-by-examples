@@ -6,7 +6,12 @@ import BootstrapLearning from '@/components/cool-stuff/BootstrapLearning'
 import GoodDaddy from '@/components/cool-stuff/good-daddy/GoodDaddy'
 // Routing
 import DynamicRouting from '@/components/routing/DynamicRouting'
-import User from '@/components/routing/user/User'
+import User from '@/components/routing/nested-views/User'
+
+import Main from '@/components/routing/named-views/Main'
+import Default from '@/components/routing/named-views/Default'
+import Second from '@/components/routing/named-views/Second'
+import Third from '@/components/routing/named-views/Third'
 
 import routeGroups from './groups.js'
 import userRoutes from './userRoutes.js'
@@ -52,11 +57,26 @@ const routes = [
     component: DynamicRouting
   },
   {
-    path: '/user/:id',
+    path: '/nested-views/:id',
     name: 'User',
     category: routeGroups.routing.category,
     component: User,
     children: userRoutes
+  },
+  {
+    path: '/named-views',
+    category: routeGroups.routing.category,
+    component: Main,
+    children: [
+      {
+        path: '',
+        components: {
+          default: Default,
+          second: Second,
+          third: Third
+        }
+      }
+    ]
   }
 ]
 

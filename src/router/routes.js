@@ -16,6 +16,8 @@ import Third from '@/components/routing/named-views/Third'
 import routeGroups from './groups.js'
 import userRoutes from './userRoutes.js'
 
+import UserProps from '@/components/routing/passing-props/User'
+
 const routes = [
   {
     path: '/',
@@ -77,6 +79,13 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '/user-props/:id',
+    name: 'User Props',
+    category: routeGroups.routing.category,
+    component: UserProps,
+    props: true
   }
 ]
 

@@ -3,16 +3,18 @@
     <div class="row justify-content-center">
       <div class="col-6">
         <div class="border">
-          <h2>Father</h2>
-          <p>Count of children: {{children.length}}</p>
-          <p>Do we have here a good father? <input type="checkbox" v-model="daddyGood"></p>
-
-          <div class="row" v-show="children.length > 2">
-            <label for="shuffle">Press this button (it's super cool)</label>
-            <button @click="shuffle" type="button" id="shuffle" class="btn btn-danger">
-              Shuffle
-            </button>
+          <div class="text-center">
+            <h2>Father</h2>
+            <p>Count of children: {{children.length}}</p>
+            <p>Do we have here a good father? <input type="checkbox" v-model="daddyGood"></p>
+            <span v-show="children.length > 2">
+              <label>Press this button (it's super cool)</label>
+              <button @click="shuffle" type="button" id="shuffle" class="btn btn-danger">
+                Shuffle
+              </button>
+            </span>
           </div>
+
           <div class="row">
             <div class="col-6">
               <h4>Create</h4>
@@ -38,10 +40,12 @@
       </div>
     </div>
 
-    <div class="row justify-content-center">
-      <span v-show="children.length">
+    <span v-show="children.length">
+      <div class="row justify-content-center">
         <h2 class="col-12">Daddy's Children</h2>
-
+      </div>
+      
+      <div class="row justify-content-center">
         <transition-group name="flip-list" tag="div" class="row">
           <template v-for='(name, index) in children'>
 
@@ -56,8 +60,8 @@
             </div>
           </template>
         </transition-group>
-      </span>
-    </div>
+      </div>
+    </span>
 
   </div>
 </template>

@@ -4,6 +4,7 @@ import About from '@/components/About'
 import YesNo from '@/components/cool-stuff/YesNo'
 import BootstrapLearning from '@/components/cool-stuff/BootstrapLearning'
 import GoodDaddy from '@/components/cool-stuff/good-daddy/GoodDaddy'
+import Blog from '@/components/blog/Blog'
 // Routing
 import DynamicRouting from '@/components/routing/DynamicRouting'
 import User from '@/components/routing/nested-views/User'
@@ -86,6 +87,12 @@ const routes = [
     category: routeGroups.routing.category,
     component: UserProps,
     props: true
+  },
+  {
+    path: '/blog',
+    name: 'blog',
+    category: routeGroups.blog.category,
+    component: Blog
   }
 ]
 

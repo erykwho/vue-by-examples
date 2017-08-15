@@ -17,9 +17,12 @@ const getters = {
 }
 
 const mutations = {
-  editPost (state, postId, newPost) {
-    state.posts[postId].title = newPost.title
-    state.posts[postId].content = newPost.content
+  editPost (state, post) {
+    console.log('Mutations')
+    console.log(post)
+    let index = state.posts.map((el) => el.id).indexOf(post.id)
+    state.posts[index].title = post.title
+    state.posts[index].content = post.content
   },
   createPost (state, post) {
     state.posts.push({
@@ -37,6 +40,9 @@ const actions = {
       context.commit('createPost', post)
       resolve({ id: total - 1 })
     })
+  },
+  editPost (context, content) {
+    context.commit('editPost', content.post)
   }
 }
 

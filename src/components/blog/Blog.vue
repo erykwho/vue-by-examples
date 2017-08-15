@@ -16,7 +16,7 @@
 
         <div class="row justify-content-center">
           <router-link to="/blog/post/new">
-            <button class="btn btn-outline-success">
+            <button class="btn btn-outline-primary">
               I wanna write
             </button>
           </router-link>

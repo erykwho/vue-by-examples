@@ -7,7 +7,9 @@
     <div class="row justify-content-center">
 
       <div class="col-9 border">
-        <post v-if="postId" :postId="postId"></post>
+        <transition name="fade" mode="out-in">
+          <post :key="postId" v-if="postId" :postId="postId"></post>
+        </transition>
       </div>
 
       <div class="col-3">
@@ -52,3 +54,15 @@ export default {
   }
 }
 </script>
+
+
+<style>
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0
+  }
+
+</style>

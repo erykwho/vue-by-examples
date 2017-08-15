@@ -97,6 +97,13 @@ const routes = [
     component: Blog
   },
   {
+    path: '/blog/post/:postId(\\d+)',
+    name: 'blog post',
+    category: routeGroups.blog.category,
+    component: Blog,
+    props: true
+  },
+  {
     path: '/blog/post/new',
     name: 'create-post',
     category: routeGroups.blog.category,

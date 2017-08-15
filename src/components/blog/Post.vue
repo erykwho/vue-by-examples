@@ -16,7 +16,7 @@
     props: ['postId'],
     computed: {
       post () {
-        return this.$store.getters.postById(this.postId)
+        return this.$store.getters.postById(Number(this.postId))
       }
     }
   }

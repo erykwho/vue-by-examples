@@ -15,7 +15,7 @@
       <div class="col-3">
 
         <div class="row justify-content-center">
-          <router-link to="blog/post/new">
+          <router-link to="/blog/post/new">
             <button class="btn btn-outline-success">
               I wanna write
             </button>
@@ -24,7 +24,12 @@
 
         <div class="form-horizontal p-4">
           <label for="postId" class="form-control-label">Search</label>
-          <input id="postId" class="form-control" placeholder="Post id" v-model.number="postId">
+          <input id="postId" class="form-control" placeholder="Post id"
+                 v-model="searchPostId"
+                 v-on:input="show"
+                 v-on:keyup.enter="show"
+          >
+
         </div>
 
         <post-titles @showPost="showPost($event)"></post-titles>
@@ -41,16 +46,26 @@
 import Post from '@/components/blog/Post'
 import PostTitles from '@/components/blog/PostTitles'
 export default {
+  props: ['postId'],
+  components: { Post, PostTitles },
   data () {
     return {
-      postId: null
+      searchPostId: null
     }
   },
-  components: { Post, PostTitles },
   methods: {
     showPost (postId) {
-      this.postId = postId
+      let route = '/blog/post/' + postId
+      this.$router.push(route)
+    },
+    show (event) {
+      let value = event.target.value
+      if (value) {
+        let route = '/blog/post/' + event.target.value
+        this.$router.push(route)
+      }
     }
+
   }
 }
 </script>

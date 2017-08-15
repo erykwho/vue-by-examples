@@ -50,11 +50,9 @@
     },
     methods: {
       create () {
-        this.$store.commit({
-          type: 'createPost',
-          post: this.post
+        this.$store.dispatch('createPost', this.post).then((response) => {
+          this.$router.push('/blog/post/' + String(response.id))
         })
-        this.$router.push('/blog')
       }
     }
   }

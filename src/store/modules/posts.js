@@ -21,17 +21,24 @@ const mutations = {
     state.posts[postId].title = newPost.title
     state.posts[postId].content = newPost.content
   },
-  createPost (state, payload) {
+  createPost (state, post) {
     state.posts.push({
       id: total,
-      title: payload.post.title,
-      content: payload.post.content
+      title: post.title,
+      content: post.content
     })
     total++
   }
 }
 
-const actions = {}
+const actions = {
+  createPost (context, post) {
+    return new Promise((resolve) => {
+      context.commit('createPost', post)
+      resolve({ id: total - 1 })
+    })
+  }
+}
 
 export default {
   state,

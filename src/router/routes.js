@@ -4,7 +4,6 @@ import About from '@/components/About'
 import YesNo from '@/components/cool-stuff/YesNo'
 import BootstrapLearning from '@/components/cool-stuff/BootstrapLearning'
 import GoodDaddy from '@/components/cool-stuff/good-daddy/GoodDaddy'
-import Blog from '@/components/blog/Blog'
 // Routing
 import DynamicRouting from '@/components/routing/DynamicRouting'
 import User from '@/components/routing/nested-views/User'
@@ -18,6 +17,9 @@ import routeGroups from './groups.js'
 import userRoutes from './userRoutes.js'
 
 import UserProps from '@/components/routing/passing-props/User'
+// Blog
+import Blog from '@/components/blog/Blog'
+import NewPost from '@/components/blog/NewPost'
 
 const routes = [
   {
@@ -93,6 +95,12 @@ const routes = [
     name: 'blog',
     category: routeGroups.blog.category,
     component: Blog
+  },
+  {
+    path: '/blog/post/new',
+    name: 'create-post',
+    category: routeGroups.blog.category,
+    component: NewPost
   }
 ]
 

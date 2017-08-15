@@ -21,11 +21,11 @@ const mutations = {
     state.posts[postId].title = newPost.title
     state.posts[postId].content = newPost.content
   },
-  newPost (state, post) {
+  createPost (state, payload) {
     state.posts.push({
       id: total,
-      title: post.title,
-      content: post.content
+      title: payload.post.title,
+      content: payload.post.content
     })
     total++
   }

@@ -8,7 +8,7 @@
         </div>
         <div class="col-4">
 
-          <button @click="show(post.id)" class="btn btn-outline-primary">
+          <button @click="show(post.id)" class="btn btn-outline-info">
             Show
           </button>
         </div>

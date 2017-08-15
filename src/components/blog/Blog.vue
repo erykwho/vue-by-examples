@@ -11,7 +11,16 @@
       </div>
 
       <div class="col-3">
-        <div class="form-horizontal">
+
+        <div class="row justify-content-center">
+          <router-link to="blog/post/new">
+            <button class="btn btn-outline-success">
+              I wanna write
+            </button>
+          </router-link>
+        </div>
+
+        <div class="form-horizontal p-4">
           <label for="postId" class="form-control-label">Search</label>
           <input id="postId" class="form-control" placeholder="Post id" v-model.number="postId">
         </div>

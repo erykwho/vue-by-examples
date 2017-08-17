@@ -17,6 +17,9 @@ import routeGroups from './groups.js'
 import userRoutes from './userRoutes.js'
 
 import UserProps from '@/components/routing/passing-props/User'
+// Blog
+import Blog from '@/components/blog/Blog'
+import NewPost from '@/components/blog/NewPost'
 
 const routes = [
   {
@@ -86,6 +89,25 @@ const routes = [
     category: routeGroups.routing.category,
     component: UserProps,
     props: true
+  },
+  {
+    path: '/blog',
+    name: 'blog',
+    category: routeGroups.blog.category,
+    component: Blog
+  },
+  {
+    path: '/blog/post/:postId(\\d+)',
+    name: 'blog post',
+    category: routeGroups.blog.category,
+    component: Blog,
+    props: true
+  },
+  {
+    path: '/blog/post/new',
+    name: 'create-post',
+    category: routeGroups.blog.category,
+    component: NewPost
   }
 ]
 

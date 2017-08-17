@@ -6,6 +6,10 @@ const routeGroups = {
   coolStuff: {
     name: 'Cool Stuff',
     category: 'coolStuff'
+  },
+  blog: {
+    name: 'Blog',
+    category: 'blog'
   }
 }
 

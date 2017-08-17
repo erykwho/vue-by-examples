@@ -10,6 +10,10 @@ const routeGroups = {
   blog: {
     name: 'Blog',
     category: 'blog'
+  },
+  expensesDiary: {
+    name: 'Expenses Diary',
+    category: 'expensesDiary'
   }
 }
 

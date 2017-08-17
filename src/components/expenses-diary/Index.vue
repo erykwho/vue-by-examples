@@ -3,7 +3,7 @@
     <h2>Fucking Welcome to Expenses Diary API Interface</h2>
     <p>Here you'll be able to fucking:</p>
     <ul>
-      <li><router-link to="#">Get all expenses</router-link></li>
+      <li><router-link to="/exd/expenses">Get all expenses</router-link></li>
       <li><router-link to="#">Add a new expense</router-link></li>
       <li><router-link to="#">See a specific expense</router-link></li>
       <li><router-link to="#">Delete a specific expense</router-link></li>

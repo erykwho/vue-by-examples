@@ -22,6 +22,7 @@ import Blog from '@/components/blog/Blog'
 import NewPost from '@/components/blog/NewPost'
 // Expenses Diary
 import EXD from '@/components/expenses-diary/Index.vue'
+import Expenses from '@/components/expenses-diary/Expenses.vue'
 
 const routes = [
   {
@@ -116,6 +117,12 @@ const routes = [
     name: 'expenses-diary',
     category: routeGroups.expensesDiary.category,
     component: EXD
+  },
+  {
+    path: '/exd/expenses',
+    name: 'expenses',
+    category: routeGroups.expensesDiary.category,
+    component: Expenses
   }
 ]
 

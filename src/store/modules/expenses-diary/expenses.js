@@ -1,4 +1,7 @@
 import axios from 'axios'
+// const EXD_EXPENSES_URL = 'http://localhost:5000/v1/expenses'
+const EXD_EXPENSES_URL = process.env.EXD_EXPENSES_URL
+console.log(EXD_EXPENSES_URL)
 
 const state = {
   expenses: [],
@@ -26,14 +29,22 @@ const mutations = {
     state.expenses.push(expense)
     state.totalExpenses++
   },
-  editExpense: (state, expense) => { console.log('Mutation: Edit expense ' + String(expense.id)) },
-  deleteExpense: (state, expense) => { console.log('Mutation: Delete expense ' + String(expense.id)) }
+  editExpense: (state, expense) => {
+    let index = state.expenses.map((el) => el.id).indexOf(expense.id)
+    state.expenses.splice(index, 1)
+    state.expenses.splice(index, 0, expense)
+  },
+  deleteExpense: (state, expense) => {
+    let index = state.expenses.map((el) => el.id).indexOf(expense.id)
+    state.expenses.splice(index, 1)
+    state.totalExpenses--
+  }
 }
 
 const actions = {
   getExpenses: (context) => {
     return new Promise((resolve, reject) => {
-      axios.get('http://localhost:5000/v1/expenses')
+      axios.get(EXD_EXPENSES_URL)
         .then((response) => {
           context.commit('getExpenses', response.data)
           resolve()
@@ -46,7 +57,7 @@ const actions = {
   },
   createExpense: (context, expense) => {
     return new Promise((resolve, reject) => {
-      axios.post('http://localhost:5000/v1/expenses', {
+      axios.post(EXD_EXPENSES_URL, {
         ...expense
       })
         .then(() => {
@@ -59,7 +70,7 @@ const actions = {
     })
   },
   editExpense: (context, expense) => {
-    axios.patch('http://localhost:5000/v1/expenses/' + String(expense.id), {
+    axios.patch(EXD_EXPENSES_URL + '/' + String(expense.id), {
       payment_origin_id: expense.payment_origin_id,
       category_id: expense.category_id,
       reference_date: expense.reference_date,
@@ -79,7 +90,7 @@ const actions = {
       })
   },
   deleteExpense: (context, expense) => {
-    axios.delete('http://localhost:5000/v1/expenses/' + String(expense.id))
+    axios.delete(EXD_EXPENSES_URL + '/' + String(expense.id))
       .then(response => {
         // JSON responses are automatically parsed.
         context.commit('deleteExpense', expense)

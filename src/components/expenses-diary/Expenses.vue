@@ -9,7 +9,7 @@
       <span v-if="expenses && expenses.length">
         <p>Total of {{totalExpenses}} expenses</p>
         <div class="row justify-content-center">
-          <table class="table table-responsive table-hover">
+          <table class="table table-hover">
             <thead>
               <th>Date</th>
               <th>Description</th>
@@ -68,7 +68,7 @@
     created () { this.getExpenses() },
     methods: {
       getExpenses () {
-        axios.get(`http://localhost:5000/v1/expenses`)
+        axios.get('http://localhost:5000/v1/expenses')
           .then(response => {
             // JSON responses are automatically parsed.
             this.expenses = response.data.content

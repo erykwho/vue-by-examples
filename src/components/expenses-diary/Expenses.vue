@@ -49,12 +49,22 @@
       </ul>
 
     </span>
-  </div>
+
+    <b-button size="sm" variant="outline-success" v-b-modal.newExpense>
+      Create new expense
+    </b-button>
+
+    <b-modal id="newExpense" title="Create a new expense" @ok="createExpense">
+      <expense-form :expense="newExpense"></expense-form>
+    </b-modal>
+
+    </div>
 </template>
 
 <script>
   import axios from 'axios'
   import ExpenseActions from './ExpenseActions'
+  import ExpenseForm from './ExpenseForm'
   import Loading from '@/components/Loading'
   export default {
     data () {
@@ -62,11 +72,22 @@
         loading: true,
         expenses: [],
         errors: [],
-        totalExpenses: null
+        totalExpenses: null,
+        newExpense: {
+          reference_date: null,
+          description: null,
+          category_id: null,
+          amount: null,
+          user_id: 1,
+          payment_origin_id: 1
+        }
       }
     },
     created () { this.getExpenses() },
     methods: {
+      createExpense () {
+        this.$store.dispatch('createExpense', this.newExpense)
+      },
       getExpenses () {
         axios.get('http://localhost:5000/v1/expenses')
           .then(response => {
@@ -87,6 +108,6 @@
         return 0
       }
     },
-    components: { ExpenseActions, Loading }
+    components: { ExpenseActions, ExpenseForm, Loading }
   }
 </script>

@@ -1,18 +1,21 @@
 <template>
   <div>
-    <b-dropdown :key="expense.id" class="">
-      <b-dropdown-item v-b-modal.edit>Edit</b-dropdown-item>
-      <b-dropdown-item @click="deleteExpense">Delete</b-dropdown-item>
-    </b-dropdown>
+    <b-button size="sm" variant="secondary" v-b-modal="String(expense.id)">
+      Edit
+    </b-button>
+    <b-button size="sm" variant="secondary" @click="deleteExpense">
+      Delete
+    </b-button>
 
-      <edit-expense :expense="expense" @editExpense="editExpense"></edit-expense>
-
+    <b-modal :id="String(expense.id)" title="Edit expense" @ok="editExpense">
+      <expense-form :expense="expense"></expense-form>
+    </b-modal>
 
   </div>
 </template>
 
 <script>
-  import EditExpense from './EditExpense'
+  import ExpenseForm from './ExpenseForm'
   export default {
     props: ['expense'],
     methods: {
@@ -24,6 +27,6 @@
         this.$store.dispatch('deleteExpense', this.expense)
       }
     },
-    components: { EditExpense }
+    components: { ExpenseForm }
   }
 </script>

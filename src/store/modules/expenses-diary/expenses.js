@@ -9,13 +9,25 @@ const getters = {
 }
 
 const mutations = {
-  createExpense: (state, expense) => { console.log('TODO: Create create expense'); console.log(expense) },
-  editExpense: (state, expense) => { console.log('TODO: Edit expense ' + String(expense.id)) },
-  deleteExpense: (state, expense) => { console.log('TODO: Delete expense ' + String(expense.id)) }
+  createExpense: (state, expense) => { console.log('Mutation: Create create expense'); console.log(expense) },
+  editExpense: (state, expense) => { console.log('Mutation: Edit expense ' + String(expense.id)) },
+  deleteExpense: (state, expense) => { console.log('Mutation: Delete expense ' + String(expense.id)) }
 }
 
 const actions = {
-  createExpense: (context, expense) => { console.log('TODO: Create create expense') },
+  createExpense: (context, expense) => {
+    axios.post('http://localhost:5000/v1/expenses', {
+      ...expense
+    })
+      .then(response => {
+        context.commit('createExpense', expense)
+        console.log('Expense created')
+      })
+      .catch(error => {
+        console.log('Error')
+        console.log(error)
+      })
+  },
   editExpense: (context, expense) => {
     axios.patch('http://localhost:5000/v1/expenses/' + String(expense.id), {
       payment_origin_id: expense.payment_origin_id,

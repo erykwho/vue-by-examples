@@ -11,9 +11,10 @@
       {{error}}
     </b-alert>
 
-    <span v-if="loading">
-      <loading target="expenses"></loading>
+    <span v-if="loading.value">
+      <loading :message="loading.message"></loading>
     </span>
+
     <span v-else>
       <span v-if="expenses && expenses.length">
         <p>Total of {{totalExpenses}} expenses</p>
@@ -51,17 +52,17 @@
 
       </span>
 
+      <div class="row justify-content-center">
+        <b-button size="lg" variant="outline-success" v-b-modal.newExpense>
+          Create new expense
+        </b-button>
+      </div>
+
+      <b-modal id="newExpense" title="Create a new expense" @ok="createExpense">
+        <expense-form :expense="newExpense"></expense-form>
+      </b-modal>
+
     </span>
-
-    <div class="row justify-content-center">
-      <b-button size="lg" variant="outline-success" v-b-modal.newExpense>
-        Create new expense
-      </b-button>
-    </div>
-
-    <b-modal id="newExpense" title="Create a new expense" @ok="createExpense">
-      <expense-form :expense="newExpense"></expense-form>
-    </b-modal>
 
   </div>
 </template>
@@ -78,7 +79,10 @@
         info: null,
         error: null,
 
-        loading: true,
+        loading: {
+          value: true,
+          message: 'Loading expenses...'
+        },
 
         newExpense: {
           reference_date: null,
@@ -92,9 +96,7 @@
     },
     created () {
       this.$store.dispatch('getExpenses')
-        .then(() => {
-          this.loading = false
-        })
+        .then(() => { this.loading = false })
         .catch(() => {
           this.error = 'Something went insanely wrong while fetching data from the server'
           this.loading = false
@@ -102,16 +104,19 @@
     },
     methods: {
       createExpense () {
+        this.loading = {
+          value: true,
+          message: 'Creating expense...'
+        }
         this.$store.dispatch('createExpense', this.newExpense)
           .then(() => {
             this.info = 'Expense created'
+            this.loading = false
           })
           .catch(() => {
             this.error = 'An error occurred while creating the expense'
+            this.loading = false
           })
-      },
-      getExpenses () {
-        this.loading = false
       },
       getInfo (message) {
         this.info = message

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row justify-content-center">
-      <p class="loading">Loading {{target}}</p>
+      <p class="loading">{{message}}</p>
     </div>
     <div class="row justify-content-center">
       <pulse-loader :size="size" :color="color"></pulse-loader>
@@ -13,7 +13,7 @@
 <script>
   import PulseLoader from 'vue-spinner/src/PulseLoader'
   export default {
-    props: ['target'],
+    props: ['message'],
     data () {
       return {
         size: '20px',

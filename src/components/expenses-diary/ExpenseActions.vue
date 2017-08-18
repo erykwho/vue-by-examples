@@ -1,14 +1,18 @@
 <template>
   <div>
-    <b-button size="sm" variant="secondary" v-b-modal="String(expense.id)">
+    <b-button size="sm" variant="secondary" v-b-modal="'editExpense ' + String(expense.id)">
       Edit
     </b-button>
-    <b-button size="sm" variant="secondary" @click="deleteExpense">
+    <b-button size="sm" variant="secondary" v-b-modal="'deleteExpense ' + String(expense.id)">
       Delete
     </b-button>
 
-    <b-modal :id="String(expense.id)" title="Edit expense" @ok="editExpense">
+    <b-modal :id="'editExpense ' + String(expense.id)" title="Edit expense" @ok="editExpense">
       <expense-form :expense="expense"></expense-form>
+    </b-modal>
+
+    <b-modal :id="'deleteExpense ' + String(expense.id)" title="Delete expense" @ok="deleteExpense">
+      <p>Are you sure you want to delete this expense?</p>
     </b-modal>
 
   </div>
@@ -20,10 +24,11 @@
     props: ['expense'],
     methods: {
       editExpense () {
-        console.log('Editing expense...')
+        this.$emit('info', 'Expense edited')
         this.$store.dispatch('editExpense', this.expense)
       },
       deleteExpense () {
+        this.$emit('info', 'Expense deleted')
         this.$store.dispatch('deleteExpense', this.expense)
       }
     },

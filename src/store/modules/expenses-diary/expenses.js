@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const state = {
-  expenses: []
+  expenses: [],
+  totalExpenses: 0
 }
 
 const getters = {
@@ -21,7 +22,10 @@ const mutations = {
     state.expenses = expenses.content
     state.totalExpenses = expenses.total
   },
-  createExpense: (state, expense) => { console.log('Mutation: Create create expense'); console.log(expense) },
+  createExpense: (state, expense) => {
+    state.expenses.push(expense)
+    state.totalExpenses++
+  },
   editExpense: (state, expense) => { console.log('Mutation: Edit expense ' + String(expense.id)) },
   deleteExpense: (state, expense) => { console.log('Mutation: Delete expense ' + String(expense.id)) }
 }
@@ -30,28 +34,29 @@ const actions = {
   getExpenses: (context) => {
     return new Promise((resolve, reject) => {
       axios.get('http://localhost:5000/v1/expenses')
-        .then(response => {
+        .then((response) => {
           context.commit('getExpenses', response.data)
           resolve()
         })
-        .catch(error => {
+        .catch(() => {
           console.log('Error while getting expenses')
-          reject(error)
+          reject()
         })
     })
   },
   createExpense: (context, expense) => {
-    axios.post('http://localhost:5000/v1/expenses', {
-      ...expense
+    return new Promise((resolve, reject) => {
+      axios.post('http://localhost:5000/v1/expenses', {
+        ...expense
+      })
+        .then(() => {
+          context.commit('createExpense', expense)
+          resolve()
+        })
+        .catch(() => {
+          reject()
+        })
     })
-      .then(response => {
-        context.commit('createExpense', expense)
-        console.log('Expense created')
-      })
-      .catch(error => {
-        console.log('Error')
-        console.log(error)
-      })
   },
   editExpense: (context, expense) => {
     axios.patch('http://localhost:5000/v1/expenses/' + String(expense.id), {

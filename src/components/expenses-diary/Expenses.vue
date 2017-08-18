@@ -102,8 +102,13 @@
     },
     methods: {
       createExpense () {
-        this.info = 'Expense created'
         this.$store.dispatch('createExpense', this.newExpense)
+          .then(() => {
+            this.info = 'Expense created'
+          })
+          .catch(() => {
+            this.error = 'An error occurred while creating the expense'
+          })
       },
       getExpenses () {
         this.loading = false

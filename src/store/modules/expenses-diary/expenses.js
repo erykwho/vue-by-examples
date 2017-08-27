@@ -1,7 +1,9 @@
 import axios from 'axios'
 // const EXD_EXPENSES_URL = 'http://localhost:5000/v1/expenses'
-const EXD_EXPENSES_URL = process.env.EXD_EXPENSES_URL
-console.log(EXD_EXPENSES_URL)
+const EXD_EXPENSES_URL = process.env.EXD_EXPENSES_URL + 'v1/expenses'
+const EXD_EXPENSE_URL = process.env.EXD_EXPENSES_URL + 'v1/expense'
+console.log('Expenses URL: ', EXD_EXPENSES_URL)
+console.log('Expense URL: ', EXD_EXPENSE_URL)
 
 const state = {
   expenses: [],
@@ -70,7 +72,7 @@ const actions = {
     })
   },
   editExpense: (context, expense) => {
-    axios.patch(EXD_EXPENSES_URL + '/' + String(expense.id), {
+    axios.patch(EXD_EXPENSE_URL + '/' + String(expense.id), {
       payment_origin_id: expense.payment_origin_id,
       category_id: expense.category_id,
       reference_date: expense.reference_date,
@@ -90,7 +92,7 @@ const actions = {
       })
   },
   deleteExpense: (context, expense) => {
-    axios.delete(EXD_EXPENSES_URL + '/' + String(expense.id))
+    axios.delete(EXD_EXPENSE_URL + '/' + String(expense.id))
       .then(response => {
         // JSON responses are automatically parsed.
         context.commit('deleteExpense', expense)

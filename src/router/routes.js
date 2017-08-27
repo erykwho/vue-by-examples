@@ -23,6 +23,8 @@ import NewPost from '@/components/blog/NewPost'
 // Expenses Diary
 import EXD from '@/components/expenses-diary/Index.vue'
 import Expenses from '@/components/expenses-diary/Expenses.vue'
+// Capture
+import Capture from '@/components/Capture.vue'
 
 const routes = [
   {
@@ -123,6 +125,12 @@ const routes = [
     name: 'expenses',
     category: routeGroups.expensesDiary.category,
     component: Expenses
+  },
+  {
+    path: '/capture',
+    name: 'capture',
+    category: routeGroups.coolStuff.category,
+    component: Capture
   }
 ]
 

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '@/store'
 // const EXD_EXPENSES_URL = 'http://localhost:5000/v1/expenses'
 const EXD_EXPENSES_URL = process.env.EXD_EXPENSES_URL + 'v1/expenses'
 const EXD_EXPENSE_URL = process.env.EXD_EXPENSES_URL + 'v1/expense'
@@ -46,14 +47,15 @@ const mutations = {
 const actions = {
   getExpenses: (context) => {
     return new Promise((resolve, reject) => {
-      axios.get(EXD_EXPENSES_URL)
+      axios.get(EXD_EXPENSES_URL, {
+        headers: store.getters.authHeaders
+      })
         .then((response) => {
           context.commit('getExpenses', response.data)
           resolve()
         })
-        .catch(() => {
-          console.log('Error while getting expenses')
-          reject()
+        .catch((err) => {
+          reject(err.response.data.message)
         })
     })
   },
@@ -61,47 +63,55 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(EXD_EXPENSES_URL, {
         ...expense
+      }, {
+        headers: store.getters.authHeaders
       })
         .then(() => {
           context.commit('createExpense', expense)
           resolve()
         })
-        .catch(() => {
-          reject()
+        .catch((err) => {
+          reject(err.response.data.message)
         })
     })
   },
   editExpense: (context, expense) => {
-    axios.patch(EXD_EXPENSE_URL + '/' + String(expense.id), {
-      payment_origin_id: expense.payment_origin_id,
-      category_id: expense.category_id,
-      reference_date: expense.reference_date,
-      description: expense.description,
-      amount: expense.amount,
-      regreted: expense.regreted,
-      comments: expense.comments
+    return new Promise((resolve, reject) => {
+      axios.patch(EXD_EXPENSE_URL + '/' + String(expense.id), {
+        payment_origin_id: expense.payment_origin_id,
+        category_id: expense.category_id,
+        reference_date: expense.reference_date,
+        description: expense.description,
+        amount: expense.amount,
+        regreted: expense.regreted,
+        comments: expense.comments
+      }, {
+        headers: store.getters.authHeaders
+      })
+        .then(() => {
+          // JSON responses are automatically parsed.
+          context.commit('editExpense', expense)
+          console.log('Expense edited')
+        })
+        .catch((err) => {
+          reject(err.response.data.message)
+        })
     })
-      .then(response => {
-        // JSON responses are automatically parsed.
-        context.commit('editExpense', expense)
-        console.log('Expense edited')
-      })
-      .catch(error => {
-        console.log('Error')
-        console.log(error)
-      })
   },
   deleteExpense: (context, expense) => {
-    axios.delete(EXD_EXPENSE_URL + '/' + String(expense.id))
-      .then(response => {
-        // JSON responses are automatically parsed.
-        context.commit('deleteExpense', expense)
-        console.log('Expense deleted')
+    return new Promise((resolve, reject) => {
+      axios.delete(EXD_EXPENSE_URL + '/' + String(expense.id), {
+        headers: store.getters.authHeaders
       })
-      .catch(error => {
-        console.log('Error')
-        console.log(error)
-      })
+        .then(() => {
+          // JSON responses are automatically parsed.
+          context.commit('deleteExpense', expense)
+          console.log('Expense deleted')
+        })
+        .catch(err => {
+          reject(err.response.data.message)
+        })
+    })
   }
 }
 

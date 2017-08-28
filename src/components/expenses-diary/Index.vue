@@ -1,21 +1,11 @@
 <template>
-  <div id="exd">
-    <h2>Fucking Welcome to Expenses Diary API Interface</h2>
-    <p>Here you'll be able to fucking:</p>
-    <ul>
-      <li><router-link to="/exd/expenses">Get all expenses</router-link></li>
-      <li><router-link to="#">Add a new expense</router-link></li>
-      <li><router-link to="#">See a specific expense</router-link></li>
-      <li><router-link to="#">Delete a specific expense</router-link></li>
-      <li><router-link to="#">Edit a specific expense</router-link></li>
-    </ul>
-    <h4>Urraaaaaaay!!!</h4>
-  </div>
 
+  <div id="exd">
+    <div class="row justify-content-center">
+      <img src="https://media.giphy.com/media/mW05nwEyXLP0Y/giphy.gif" class="p-2">
+    </div>
+  </div>
 </template>
 
 <script>
-  export default {
-
-  }
 </script>

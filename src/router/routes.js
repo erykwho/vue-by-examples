@@ -21,8 +21,8 @@ import UserProps from '@/components/routing/passing-props/User'
 import Blog from '@/components/blog/Blog'
 import NewPost from '@/components/blog/NewPost'
 // Expenses Diary
-import EXD from '@/components/expenses-diary/Index.vue'
-import Expenses from '@/components/expenses-diary/Expenses.vue'
+import EXD from '@/components/expenses-diary/App.vue'
+import exdRoutes from './exdRoutes'
 // Capture
 import Capture from '@/components/Capture.vue'
 
@@ -118,13 +118,8 @@ const routes = [
     path: '/exd',
     name: 'expenses-diary',
     category: routeGroups.expensesDiary.category,
-    component: EXD
-  },
-  {
-    path: '/exd/expenses',
-    name: 'expenses',
-    category: routeGroups.expensesDiary.category,
-    component: Expenses
+    component: EXD,
+    children: exdRoutes
   },
   {
     path: '/capture',

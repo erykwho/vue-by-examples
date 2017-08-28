@@ -97,8 +97,8 @@
     created () {
       this.$store.dispatch('getExpenses')
         .then(() => { this.loading = false })
-        .catch(() => {
-          this.error = 'Something went insanely wrong while fetching data from the server'
+        .catch((err) => {
+          this.error = err
           this.loading = false
         })
     },
@@ -113,8 +113,8 @@
             this.info = 'Expense created'
             this.loading = false
           })
-          .catch(() => {
-            this.error = 'An error occurred while creating the expense'
+          .catch((err) => {
+            this.error = err
             this.loading = false
           })
       },
